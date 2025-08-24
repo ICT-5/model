@@ -1,0 +1,15 @@
+# Python venv
+ict_2025/
+venv/
+.env
+
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*.pyo
+
+# OS files
+.DS_Store
+
+# Docker stuff
+mysql/data/
