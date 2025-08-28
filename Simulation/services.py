@@ -1,4 +1,4 @@
-from db_utils import fetch_questions, start_session, log_question, log_answer, end_session, upsert_free_text_question
+from db_utils import fetch_questions, fetch_keywords, start_session, log_question, log_answer, end_session, upsert_free_text_question
 from llm_utils import generate_follow_up_questions, init_llm_chain
 
 chain = init_llm_chain()
@@ -8,8 +8,9 @@ chain = init_llm_chain()
 # ----------------------------
 def start_interview(user_id, interview_type):
     questions = fetch_questions(interview_type)
+    keywords = fetch_keywords(user_id)
     session_id = start_session(user_id, total_questions=5)
-    return session_id, questions
+    return session_id, questions, keywords
 
 # ----------------------------
 # 2) 단일 답변 & 꼬리질문 생성

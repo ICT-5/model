@@ -66,5 +66,7 @@ def generate_follow_up_questions(chain, question, answer, keywords, interview_ty
         "interview_type": interview_type,
         "personality": personality,
     }
+    print("이번 꼬리질문에 사용된 키워드:", keywords)
+
     response = chain.run(variables)  # 프롬프트가 "질문만 출력"하게 구성됨
     return response.strip()

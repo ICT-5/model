@@ -17,7 +17,7 @@ def get_conn():
         port=int(os.getenv("MYSQL_PORT", "3306")),
         user=os.getenv("MYSQL_USER", "root"),
         password=os.getenv("MYSQL_PASSWORD", ""),
-        database=os.getenv("MYSQL_DB", "ict5"),
+        database=os.getenv("MYSQL_DB", "ict"),
         charset="utf8mb4",
         cursorclass=pymysql.cursors.Cursor,  # tuple 형태 반환
         autocommit=True
@@ -193,3 +193,20 @@ def end_session(session_id: int, reason: str) -> None:
     """, (status, reason, datetime.now(), session_id))
     cur.close()
     conn.close()
+
+#db에 있는 이력서 분석 키워드 가져오기
+def fetch_keywords(user_id: int) -> list[str]:
+    """
+    특정 사용자의 resume_question 테이블에서 키워드(question 컬럼) 불러오기
+    """
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT question
+        FROM resume_question
+        WHERE user_id = %s
+    """, (user_id,))
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return [row[0] for row in rows] if rows else []

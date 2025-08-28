@@ -36,8 +36,13 @@ def health():
 
 @app.post("/api/simulation/session")
 def start(req: StartRequest):
-    session_id, questions = start_interview(req.user_id, req.interview_type)
-    return {"session_id": session_id, "questions": questions}
+    session_id, questions, keywords = start_interview(req.user_id, req.interview_type)
+    return {
+        "session_id": session_id,
+        "questions": questions,
+        "keywords": keywords,
+        "personality": req.personality
+    }
 
 @app.post("/api/simulation/{session_id}/answer")
 def answer(session_id: int, req: AnswerRequest):
