@@ -1,0 +1,53 @@
+# FastAPI 기본
+fastapi>=0.112.0
+uvicorn[standard]>=0.30.0
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+python-multipart>=0.0.9      
+
+# DB 연동
+sqlalchemy>=2.0.30
+pymysql>=1.1.0
+
+# OpenAI & LangChain
+openai>=1.40.0
+tiktoken>=0.7.0
+langchain>=0.2.10
+langchain-community>=0.2.10
+langchain-openai>=0.1.20
+langchain-core==0.3.74
+langchain-google-genai==2.1.9
+langchain-google-vertexai==2.0.28
+langchain-text-splitters==0.3.9
+langsmith==0.4.14
+
+# Vector DB & NLP
+faiss-cpu>=1.8.0.post1           
+sentence-transformers>=3.0.1 
+chromadb>=0.5.5               
+pinecone-client>=4.1.0          
+qdrant-client>=1.9.1             
+pymilvus>=2.4.4                  
+
+# 문서 처리
+pypdf>=4.2.0
+pdfplumber>=0.11.0
+python-docx>=1.1.0
+
+# 데이터 분석
+numpy>=1.26.4
+pandas>=2.2.2
+scikit-learn>=1.5.1              
+
+# 오디오/비디오 처리
+pydub>=0.25.1
+soundfile>=0.12.1
+ffmpeg-python>=0.2.0
+faster-whisper>=1.0.0         
+
+# NLP 추가
+sacrebleu>=2.4.0               
+nltk>=3.9
+
+# 유틸
+requests==2.32.4
