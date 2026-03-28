@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0.29
+    container_name: mysql8029
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    env_file: .env
+    environment:
+      TZ: Asia/Seoul
+    restart: always
+
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: fastapi-server
+    ports:
+      - "8000:8000"
+    env_file: .env
+    depends_on:
+      - db
+    restart: always
